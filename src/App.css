@@ -1,0 +1,531 @@
+.app-container {
+  width: 100%;
+  max-width: 1400px;
+  display: grid;
+  grid-template-columns: 1fr 400px;
+  gap: var(--spacing-xl);
+  animation: fadeIn 0.6s ease-out;
+}
+
+/* Header */
+.app-header {
+  grid-column: 1 / -1;
+  text-align: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.app-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: var(--primary-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin-bottom: var(--spacing-sm);
+  letter-spacing: -0.5px;
+}
+
+.app-subtitle {
+  color: var(--text-secondary);
+  font-size: 1.125rem;
+  font-weight: 400;
+}
+
+/* Calculator Section */
+.calculator-section {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-lg);
+}
+
+.calculator-card {
+  padding: var(--spacing-xl);
+}
+
+.card-title {
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-sm);
+}
+
+.card-icon {
+  font-size: 1.5rem;
+}
+
+/* Currency Input Component */
+.currency-input-wrapper {
+  display: flex;
+  gap: var(--spacing-md);
+  align-items: flex-end;
+}
+
+.currency-input-main {
+  flex: 1;
+}
+
+/* Currency Toggle Switch */
+.currency-toggle {
+  width: 140px;
+  height: 48px;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  transition: all var(--transition-normal);
+}
+
+.toggle-track {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  background: var(--bg-secondary);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: 4px;
+  transition: all var(--transition-normal);
+}
+
+.currency-toggle:hover .toggle-track {
+  border-color: var(--border-focus);
+  background: rgba(26, 26, 46, 0.8);
+}
+
+.toggle-option {
+  position: relative;
+  z-index: 2;
+  flex: 1;
+  text-align: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  transition: color var(--transition-normal);
+  pointer-events: none;
+}
+
+.toggle-slider {
+  position: absolute;
+  top: 4px;
+  width: calc(50% - 4px);
+  height: calc(100% - 8px);
+  background: var(--primary-gradient);
+  border-radius: calc(var(--radius-md) - 4px);
+  transition: all var(--transition-normal);
+  box-shadow: var(--shadow-sm);
+  z-index: 1;
+}
+
+.toggle-bgn .toggle-slider {
+  left: 4px;
+}
+
+.toggle-eur .toggle-slider {
+  left: calc(50%);
+}
+
+.toggle-bgn .toggle-option-left,
+.toggle-eur .toggle-option-right {
+  color: white;
+}
+
+/* Language Selector */
+.language-selector {
+  position: absolute;
+  top: var(--spacing-lg);
+  right: var(--spacing-lg);
+  display: flex;
+  gap: var(--spacing-xs);
+  background: var(--bg-card);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-xs);
+  box-shadow: var(--shadow-md);
+  z-index: 100;
+}
+
+.lang-btn {
+  width: 48px;
+  height: 48px;
+  background: transparent;
+  border: 2px solid transparent;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-normal);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.lang-btn:hover {
+  background: var(--bg-secondary);
+  border-color: var(--border-color);
+}
+
+.lang-btn.active {
+  background: var(--primary-gradient);
+  border-color: transparent;
+  box-shadow: var(--shadow-sm);
+}
+
+.lang-btn.active::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 20px;
+  height: 3px;
+  background: white;
+  border-radius: 2px;
+}
+
+.flag-icon {
+  font-size: 0.75rem;
+  font-weight: 700;
+  line-height: 1;
+  padding: 6px 8px;
+  border-radius: 4px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  display: inline-block;
+  min-width: 32px;
+  text-align: center;
+}
+
+/* UK Flag - SVG Data URI */
+.flag-gb {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 60 30'%3E%3CclipPath id='t'%3E%3Cpath d='M30,15h30v15zv15h-30zH0v-15zV0h30z'/%3E%3C/clipPath%3E%3Cpath d='M0,0v30h60v-30z' fill='%23012169'/%3E%3Cpath d='M0,0 60,30M60,0 0,30' stroke='%23fff' stroke-width='6'/%3E%3Cpath d='M0,0 60,30M60,0 0,30' clip-path='url(%23t)' stroke='%23C8102E' stroke-width='4'/%3E%3Cpath d='M30,0v30M0,15h60' stroke='%23fff' stroke-width='10'/%3E%3Cpath d='M30,0v30M0,15h60' stroke='%23C8102E' stroke-width='6'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  color: transparent;
+  /* Hide text, show flag */
+  text-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Bulgarian Flag - SVG Data URI */
+.flag-bg {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1000' height='600' viewBox='0 0 1000 600'%3E%3Crect fill='%23D62612' y='400' width='1000' height='200'/%3E%3Crect fill='%2300966E' y='200' width='1000' height='200'/%3E%3Crect fill='%23FFF' width='1000' height='200'/%3E%3C/svg%3E");
+  background-size: cover;
+  background-position: center;
+  color: transparent;
+  /* Hide text, show flag */
+  text-shadow: none;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.lang-btn:hover .flag-icon {
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+}
+
+.lang-btn.active .flag-icon {
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.5);
+}
+
+
+/* Result Display with Toggle */
+.result-content-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--spacing-lg);
+}
+
+/* Result Display */
+.result-card {
+  padding: var(--spacing-xl);
+  background: var(--primary-gradient);
+  position: relative;
+  overflow: hidden;
+}
+
+.result-card::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(255, 255, 255, 0.1) 0%, transparent 70%);
+  animation: shimmer 3s linear infinite;
+}
+
+@keyframes shimmer {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.result-content {
+  position: relative;
+  z-index: 1;
+}
+
+.result-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.8);
+  margin-bottom: var(--spacing-sm);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.result-amount {
+  font-size: 3rem;
+  font-weight: 700;
+  color: white;
+  margin-bottom: var(--spacing-xs);
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.result-currency {
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* History Section */
+.history-section {
+  display: flex;
+  flex-direction: column;
+  max-height: calc(100vh - 4rem);
+}
+
+.history-card {
+  padding: var(--spacing-xl);
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.history-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--spacing-lg);
+}
+
+.clear-btn {
+  padding: var(--spacing-xs) var(--spacing-md);
+  font-size: 0.875rem;
+  background: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+}
+
+.clear-btn:hover {
+  color: var(--text-primary);
+  border-color: var(--text-secondary);
+  background: var(--bg-secondary);
+}
+
+.history-list {
+  flex: 1;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  padding-right: var(--spacing-xs);
+}
+
+.history-item {
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  transition: all var(--transition-fast);
+  animation: slideIn 0.3s ease-out;
+}
+
+.history-item:hover {
+  background: var(--bg-card);
+  border-color: var(--border-focus);
+  transform: translateX(-4px);
+}
+
+.history-timestamp {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-xs);
+}
+
+.history-details {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-xs);
+}
+
+.history-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+}
+
+.history-row-label {
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.history-row-value {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+.history-divider {
+  height: 1px;
+  background: var(--border-color);
+  margin: var(--spacing-xs) 0;
+}
+
+.history-change {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #4facfe;
+}
+
+.empty-history {
+  text-align: center;
+  padding: var(--spacing-2xl);
+  color: var(--text-muted);
+}
+
+.empty-history-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-md);
+  opacity: 0.5;
+}
+
+.empty-history-text {
+  font-size: 0.95rem;
+}
+
+/* Exchange Rate Info */
+.exchange-rate-info {
+  margin-top: var(--spacing-lg);
+  padding: var(--spacing-md);
+  background: var(--bg-secondary);
+  border-radius: var(--radius-md);
+  text-align: center;
+  border: 1px solid var(--border-color);
+}
+
+.exchange-rate-label {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  margin-bottom: var(--spacing-xs);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.exchange-rate-value {
+  font-size: 1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+  .app-container {
+    grid-template-columns: 1fr;
+  }
+
+  .history-section {
+    max-height: 600px;
+    min-height: 400px;
+  }
+
+  .history-card {
+    min-height: 400px;
+  }
+}
+
+@media (max-width: 640px) {
+  .app-title {
+    font-size: 2rem;
+  }
+
+  .app-subtitle {
+    font-size: 1rem;
+  }
+
+  .calculator-card,
+  .history-card,
+  .result-card {
+    padding: var(--spacing-lg);
+  }
+
+  .currency-input-wrapper {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .currency-toggle {
+    width: 100%;
+  }
+
+  .result-amount {
+    font-size: 2rem;
+  }
+
+  .result-content-wrapper {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--spacing-md);
+  }
+
+  .language-selector {
+    top: var(--spacing-sm);
+    right: var(--spacing-sm);
+    padding: 4px;
+  }
+
+  .lang-btn {
+    width: 40px;
+    height: 40px;
+  }
+
+  .flag-icon {
+    font-size: 0.85rem;
+    padding: 10px 14px;
+    min-width: 28px;
+  }
+
+  /* Mobile History Fixes */
+  .history-section {
+    max-height: 500px;
+    min-height: 300px;
+    margin-top: var(--spacing-lg);
+  }
+
+  .history-card {
+    min-height: 300px;
+    max-height: 500px;
+  }
+
+  .history-list {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    max-height: 350px;
+  }
+
+  .history-item {
+    font-size: 0.875rem;
+  }
+}
