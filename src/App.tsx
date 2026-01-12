@@ -101,11 +101,14 @@ function App() {
 
   return (
     <>
-      <LanguageSelector language={language} onLanguageChange={setLanguage} />
+
 
       <div className="app-container">
         <header className="app-header">
-          <h1 className="app-title">{t.appTitle}</h1>
+          <div className="header-content">
+            <h1 className="app-title">{t.appTitle}</h1>
+            <LanguageSelector language={language} onLanguageChange={setLanguage} />
+          </div>
           <p className="app-subtitle">{t.appSubtitle}</p>
         </header>
 
@@ -113,7 +116,7 @@ function App() {
           {/* Input Section */}
           <div className="calculator-card glass-card">
             <h2 className="card-title">
-              <span className="card-icon">💵</span>
+              <img src="/euro-favicon.svg" alt="Transaction" className="card-icon-img" />
               {t.transactionDetails}
             </h2>
 

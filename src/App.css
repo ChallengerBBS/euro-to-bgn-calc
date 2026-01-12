@@ -11,7 +11,18 @@
 .app-header {
   grid-column: 1 / -1;
   text-align: center;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-sm);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-sm);
 }
 
 .app-title {
@@ -21,8 +32,9 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
-  margin-bottom: var(--spacing-sm);
   letter-spacing: -0.5px;
+  /* margin-bottom removed as it's handled by gap in header-content */
+  margin: 0;
 }
 
 .app-subtitle {
@@ -35,11 +47,13 @@
 .calculator-section {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-lg);
+  gap: var(--spacing-md);
+  height: 100%;
 }
 
 .calculator-card {
-  padding: var(--spacing-xl);
+  padding: var(--spacing-md);
+  height: 100%;
 }
 
 .card-title {
@@ -52,8 +66,10 @@
   gap: var(--spacing-sm);
 }
 
-.card-icon {
-  font-size: 1.5rem;
+.card-icon-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
 }
 
 /* Currency Input Component */
@@ -136,16 +152,15 @@
 
 /* Language Selector */
 .language-selector {
-  position: absolute;
-  top: var(--spacing-lg);
-  right: var(--spacing-lg);
+  /* Removed absolute positioning */
   display: flex;
   gap: var(--spacing-xs);
   background: var(--bg-card);
   backdrop-filter: blur(20px);
   border: 1px solid var(--border-color);
   border-radius: var(--radius-md);
-  padding: var(--spacing-xs);
+  padding: 4px;
+  /* Reduced padding slightly for inline look */
   box-shadow: var(--shadow-md);
   z-index: 100;
 }
@@ -284,7 +299,7 @@
 }
 
 .result-amount {
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   color: white;
   margin-bottom: var(--spacing-xs);
@@ -301,11 +316,11 @@
 .history-section {
   display: flex;
   flex-direction: column;
-  max-height: calc(100vh - 4rem);
+  max-height: 70vh;
 }
 
 .history-card {
-  padding: var(--spacing-xl);
+  padding: var(--spacing-md);
   display: flex;
   flex-direction: column;
   height: 100%;
@@ -316,6 +331,10 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: var(--spacing-lg);
+}
+
+.history-header .card-title {
+  margin-bottom: 0;
 }
 
 .clear-btn {

@@ -91,7 +91,7 @@ body::before {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: var(--spacing-lg);
+  padding: var(--spacing-md);
 }
 
 /* Glass Card Effect */
@@ -170,7 +170,7 @@ body::before {
 /* Input Styles */
 .input-group {
   position: relative;
-  margin-bottom: var(--spacing-lg);
+  margin-bottom: var(--spacing-md);
 }
 
 .input-label {
